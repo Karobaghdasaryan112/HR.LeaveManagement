@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using HR.LeaveManagment.Application.DTOs;
+using HR.LeaveManagment.Application.DTOs.LeaveAllocation;
 using HR.LeaveManagment.Application.DTOs.LeaveRequest;
+using HR.LeaveManagment.Application.DTOs.LeaveType;
 using HR.LeaveManagment.Domain;
 
 namespace HR.LeaveManagment.Application.Profiles

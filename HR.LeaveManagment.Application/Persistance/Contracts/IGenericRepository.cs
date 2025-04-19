@@ -9,6 +9,7 @@ namespace HR.LeaveManagment.Application.Persistance.Contracts
         Task<TEntity> AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
         Task DeleteAsync(TEntity entity);
+        Task<bool> Exists(int id);
     }
 }
 
