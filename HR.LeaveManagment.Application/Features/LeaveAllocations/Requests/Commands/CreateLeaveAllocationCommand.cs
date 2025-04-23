@@ -1,15 +1,12 @@
 ﻿using HR.LeaveManagment.Application.DTOs.LeaveAllocation;
+using HR.LeaveManagment.Application.Responses;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace HR.LeaveManagment.Application.Features.LeaveAllocations.Requests.Commands
 {
-    public class CreateLeaveAllocationCommand : IRequest<int>
+    public class CreateLeaveAllocationCommand : IRequest<ICommandResponse>
     {
-        public LeaveAllocationDto LeaveAllocationDto { get; set; }
+        public CreateLeaveAllocationDto LeaveAllocationDto { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using HR.LeaveManagment.Application.Persistance.Contracts;
+using HR.LeaveManagment.Application.Contracts.Persistance;
 
 namespace HR.LeaveManagment.Application.DTOs.LeaveAllocation.Validators
 {
@@ -16,7 +16,7 @@ namespace HR.LeaveManagment.Application.DTOs.LeaveAllocation.Validators
             RuleFor(p => p.Id)
                 .NotEmpty().WithMessage("{PropertyName} Is Required")
                 .NotNull()
-                .GreaterThan(0).WithMessage("{PropertyName} must be greater than {ComparisonValue}")''
+                .GreaterThan(0).WithMessage("{PropertyName} must be greater than {ComparisonValue}");
 
         }
     }

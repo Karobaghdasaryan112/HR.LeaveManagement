@@ -17,7 +17,6 @@ namespace HR.LeaveManagment.Application.DTOs.LeaveType.Validators
                 .GreaterThan(0).WithMessage("{PropertyName} must be greater than {ComparisonValue}")
                 .LessThan(100).WithMessage("{PropertyName} must be less than {ComparisonValue}");
 
-
         }
     }
 }
