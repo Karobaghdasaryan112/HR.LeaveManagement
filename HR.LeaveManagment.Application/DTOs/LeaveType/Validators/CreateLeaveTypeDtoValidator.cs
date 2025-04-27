@@ -13,15 +13,15 @@ namespace HR.LeaveManagment.Application.DTOs.LeaveType.Validators
 
             Include(new ILeaveTypeDtoValidator());
 
-            RuleFor(p => p.Id)
-                .NotEmpty().WithMessage("{PropertyName} Is Required")
-                .NotNull()
-                .GreaterThan(0).WithMessage("{PropertyName} must be greater than {ComparisonValue}")
-                .MustAsync(async (id, cancellation) =>
-                {
-                    var leaveType = await _leaveTypeRepository.GetAsync(id);
-                    return leaveType == null;
-                }).WithMessage("{PropertyName} already exists");
+            //RuleFor(p => p.Id)
+            //    .NotEmpty().WithMessage("{PropertyName} Is Required")
+            //    .NotNull()
+            //    .GreaterThan(0).WithMessage("{PropertyName} must be greater than {ComparisonValue}")
+            //    .MustAsync(async (id, cancellation) =>
+            //    {
+            //        var leaveType = await _leaveTypeRepository.GetAsync(id);
+            //        return leaveType == null;
+            //    }).WithMessage("{PropertyName} already exists");
         }
     }
 }

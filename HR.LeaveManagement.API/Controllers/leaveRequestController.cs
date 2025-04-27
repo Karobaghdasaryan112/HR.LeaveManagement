@@ -3,16 +3,17 @@ using HR.LeaveManagment.Application.Features.LeaveRequests.Requests.Command;
 using HR.LeaveManagment.Application.Features.LeaveRequests.Requests.Queries;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
+using HR.LeaveManagment.Application.Responses;
 
 namespace HR.LeaveManagement.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class leaveRequestController : ControllerBase
+    public class leaveRequestsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public leaveRequestController(IMediator mediator)
+        public leaveRequestsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -52,7 +53,7 @@ namespace HR.LeaveManagement.API.Controllers
 
         // Create api/<leaveRequestController>/
         [HttpPost]
-        public async Task<ActionResult<int>> CreateAsync([FromBody] CreateLeaveRequestDto leaveRequestDto)
+        public async Task<ActionResult<BaseCommandResponse>> CreateAsync([FromBody] CreateLeaveRequestDto leaveRequestDto)
         {
             var command = new CreateLeaveRequestCommand { CreateLeaveRequestDto = leaveRequestDto };
 

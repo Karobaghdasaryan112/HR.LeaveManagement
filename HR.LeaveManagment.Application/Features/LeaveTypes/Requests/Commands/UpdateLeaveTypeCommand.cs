@@ -6,6 +6,6 @@ namespace HR.LeaveManagment.Application.Features.LeaveTypes.Requests.Commands
 {
     public class UpdateLeaveTypeCommand : IRequest<ICommandResponse>
     {
-        public UpdateLeaveTypeDto UpdateLeaveTypeDto { get; set; }
+        public LeaveTypeDto UpdateLeaveTypeDto { get; set; }
     }
 }

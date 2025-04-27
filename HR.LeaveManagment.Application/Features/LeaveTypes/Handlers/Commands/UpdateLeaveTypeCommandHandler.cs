@@ -13,14 +13,14 @@ namespace HR.LeaveManagment.Application.Features.LeaveTypes.Handlers.Commands
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _mapper;
-        private IValidator<UpdateLeaveTypeDto> _validator;
+        private IValidator<LeaveTypeDto> _validator;
         private ICommandResponse _commandResponse;
 
         public UpdateLeaveTypeCommandHandler(
             ICommandResponse commandResponse,
             ILeaveTypeRepository leaveTypeRepository,
             IMapper mapper,
-            IValidator<UpdateLeaveTypeDto> validator)
+            IValidator<LeaveTypeDto> validator)
         {
             _commandResponse = commandResponse;
             _leaveTypeRepository = leaveTypeRepository;
@@ -39,6 +39,8 @@ namespace HR.LeaveManagment.Application.Features.LeaveTypes.Handlers.Commands
                     false,
                     request.UpdateLeaveTypeDto.Id,
                     ValidationResult.Errors.Select(x => x.ErrorMessage).ToList());
+
+                return baseCommandResponse;
             }
 
             var updatedLeaveType = _mapper.Map<LeaveType>(request.UpdateLeaveTypeDto);

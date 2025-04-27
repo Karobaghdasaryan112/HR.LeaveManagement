@@ -1,6 +1,4 @@
-﻿
-
-namespace HR.LeaveManagment.Application.DTOs.LeaveAllocation
+﻿namespace HR.LeaveManagment.Application.DTOs.LeaveAllocation
 {
     public interface ILeaveAllocationDto
     {

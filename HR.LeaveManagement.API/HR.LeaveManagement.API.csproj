@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HR.LeaveManagement.Identity\HR.LeaveManagement.Identity.csproj" />
     <ProjectReference Include="..\HR.LeaveManagment.Application\HR.LeaveManagment.Application.csproj" />
     <ProjectReference Include="..\HR.LeaveManagment.Infrastructure\HR.LeaveManagment.Infrastructure.csproj" />
     <ProjectReference Include="..\HR.LeaveManagment.Persistance\HR.LeaveManagment.Persistance.csproj" />

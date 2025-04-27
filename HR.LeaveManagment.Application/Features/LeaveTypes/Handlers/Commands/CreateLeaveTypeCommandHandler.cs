@@ -38,6 +38,8 @@ namespace HR.LeaveManagment.Application.Features.LeaveTypes.Handlers.Commands
                     false,
                     request.CreateLeaveTypeDto.Id,
                     ValidatorResult.Errors.Select(q => q.ErrorMessage).ToList());
+
+                return BaseCommandResponse;
             }
 
             var leaveType = _mapper.Map<LeaveType>(request.CreateLeaveTypeDto);

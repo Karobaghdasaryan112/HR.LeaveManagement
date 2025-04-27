@@ -42,8 +42,20 @@ namespace HR.LeaveManagment.Persistance.Repositories
 
         public async Task UpdateAsync(TEntity entity)
         {
-            _dbContext.Update(entity);
-            await _dbContext.SaveChangesAsync();
+            var keyProperty = _dbContext.Model
+                .FindEntityType(typeof(TEntity))
+                .FindPrimaryKey()
+                .Properties
+                .First();
+
+            var keyValue = keyProperty.PropertyInfo.GetValue(entity);
+
+            var existingEntity = await _dbContext.Set<TEntity>().FindAsync(keyValue);
+            if (existingEntity != null)
+            {
+                _dbContext.Entry(existingEntity).CurrentValues.SetValues(entity);
+                await _dbContext.SaveChangesAsync();
+            }
         }
     }
 }
