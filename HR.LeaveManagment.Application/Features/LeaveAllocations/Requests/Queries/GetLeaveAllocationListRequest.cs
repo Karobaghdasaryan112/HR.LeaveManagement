@@ -5,5 +5,6 @@ namespace HR.LeaveManagment.Application.Features.LeaveAllocations.Requests.Queri
 {
     public class GetLeaveAllocationListRequest : IRequest<List<LeaveAllocationDto>>
     {
+        public bool IsLoggedInUser;
     }
 }

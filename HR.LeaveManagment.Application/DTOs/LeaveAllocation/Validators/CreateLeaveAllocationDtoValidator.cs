@@ -11,12 +11,12 @@ namespace HR.LeaveManagment.Application.DTOs.LeaveAllocation.Validators
         {
             _leaveTypeRepository = leaveTypeRepository;
 
-            Include(new LeaveAllocationDtoValidator(_leaveTypeRepository));
 
-            RuleFor(p => p.Id)
-                .NotEmpty().WithMessage("{PropertyName} Is Required")
-                .NotNull()
-                .GreaterThan(0).WithMessage("{PropertyName} must be greater than {ComparisonValue}");
+            RuleFor(p => p.LeaveTypeId)
+                .GreaterThan(0)
+                .WithMessage("{PropertyName} must be greater than zero")
+                .MustAsync(async (id, token) => await _leaveTypeRepository.Exists(id) != null)
+                .WithMessage("{PropertyName} does not exist");
 
         }
     }

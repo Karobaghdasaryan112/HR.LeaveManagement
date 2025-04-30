@@ -1635,7 +1635,7 @@ namespace HR.LeaveManagement.MVC.Services.Base
             {
                 return new ObjectResponseResult<T>(default(T), string.Empty);
             }
-
+            var type = typeof(T);
             if (ReadResponseAsString)
             {
                 var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);

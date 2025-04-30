@@ -13,12 +13,6 @@ namespace HR.LeaveManagment.Application.DTOs.LeaveRequest.Validators
 
             Include(new ILeaveRequestDtoValidator(_leaveTypeRepository));
 
-            RuleFor(p => p.Id)
-                .NotEmpty()
-                .WithMessage("{PropertyName} Is Required")
-                .NotNull()
-                .GreaterThan(0)
-                .WithMessage("{PropertyName} must be greater than {ComparisonValue}");
         }
     }
 }

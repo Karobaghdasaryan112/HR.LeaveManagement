@@ -1,5 +1,6 @@
 ﻿using HR.LeaveManagement.MVC.Models;
 using HR.LeaveManagement.MVC.Services.Base;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagement.MVC.Contracts
 {

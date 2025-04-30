@@ -41,19 +41,20 @@ namespace HR.LeaveManagement.MVC.Services
             }
             catch (ApiException ex)
             {
-                return ConvertApiExceptions<int>(ex);
+                throw;
             }
         }
 
-        public async Task DeleteLeaveRequest(int id)
+        public async Task<LeaveRequestVM> GetLeaveRequest(int id)
         {
-                var response = new Response<int>();
-                 await _client.LeaveRequestsDELETEAsync(id);
+            AddBearerToken();
+            var leaveRequest = await _client.LeaveRequestsGETAsync(id);
+            return _mapper.Map<LeaveRequestVM>(leaveRequest);
         }
 
-        public async Task<EmpoleeLeaveRequestViewVM> GetLeaveRequests()
+        public async Task<EmpoleeLeaveRequestViewVM> GetUserLeaveRequests()
         {
-            var LeaveRequestVM = await _client.LeaveRequestsAllAsync(isLoggedInUser:true);
+            var LeaveRequestVM = await _client.LeaveRequestsAllAsync(isLoggedInUser: true);
             var allocations = await _client.LeaveAllocationsAllAsync(isLoggedInUser: true);
             var model = new EmpoleeLeaveRequestViewVM()
             {
@@ -63,14 +64,42 @@ namespace HR.LeaveManagement.MVC.Services
             return model;
         }
 
-        public Task<LeaveRequestVM> GetLeaveRequestWitrhDetails(int Id)
+
+        public async Task DeleteLeaveRequest(int id)
         {
-            throw new NotImplementedException();
+            var response = new Response<int>();
+            await _client.LeaveRequestsDELETEAsync(id);
         }
 
-        public Task<Response<int>> UpdateLeaveRequest(int Id, LeaveRequestVM leaveRequestVM)
+        public async Task<AdminLeaveRequestViewVM> GetAdminLeaveRequestList()
         {
-            throw new NotImplementedException();
+            AddBearerToken();
+            var leaveRequests = await _client.LeaveRequestsAllAsync(isLoggedInUser: false);
+
+            var model = new AdminLeaveRequestViewVM
+            {
+                TotalRequests = leaveRequests.Count,
+                ApprovedRequests = leaveRequests.Count(q => q.Approved == true),
+                PendingRequests = leaveRequests.Count(q => q.Approved == null),
+                RejectedRequests = leaveRequests.Count(q => q.Approved == false),
+                leaveRequestVMs = leaveRequests.Select(q => _mapper.Map<LeaveRequestVM>(q)).ToList()
+            };
+            return model;
         }
+
+        public async Task ApproveLeaveRequest(int id, bool approved)
+        {
+            AddBearerToken();
+            try
+            {
+                var request = new ChangeLeaveRequestApprovalDto { Approved = approved, Id = id };
+                await _client.ChangeapprovalAsync(id, request);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

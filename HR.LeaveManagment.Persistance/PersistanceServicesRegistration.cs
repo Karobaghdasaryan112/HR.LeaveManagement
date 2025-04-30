@@ -3,6 +3,8 @@ using HR.LeaveManagment.Persistance.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace HR.LeaveManagment.Persistance
 {
@@ -12,8 +14,11 @@ namespace HR.LeaveManagment.Persistance
         {
             var connetionString = 
                 configuration.GetConnectionString("LeaveManagementConnectionString");
+
+
             services.AddDbContext<LeaveManagementDbContext>(options =>
                 options.UseSqlServer(connetionString));
+
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();

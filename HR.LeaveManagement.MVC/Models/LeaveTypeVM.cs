@@ -19,7 +19,6 @@ namespace HR.LeaveManagement.MVC.Models
     }
     public class UpdateLeaveTypeVM : CreateLeaveTypeVM
     {
-        [JsonIgnore]
         public int Id { get; set; }
     }
 }

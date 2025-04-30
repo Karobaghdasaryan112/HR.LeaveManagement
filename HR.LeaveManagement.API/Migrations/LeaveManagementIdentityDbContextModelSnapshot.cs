@@ -99,7 +99,7 @@ namespace HR.LeaveManagement.API.Migrations
                         {
                             Id = "8e445865-a24d-4543-a6c6-9443d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "25b0fdbb-0c24-4b3d-8d1a-02ac7278a4cb",
+                            ConcurrencyStamp = "ee6d7b8c-dbd8-4c10-b5a0-4899059df1e0",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -107,9 +107,9 @@ namespace HR.LeaveManagement.API.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEECgs9QwG2lC1h4GgxN+jp4Dfr4DZ0pYgpbXgmAS5v6yM2aAbPvD7pOe0T7Ml+w7Yw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMyGPi5LPdB5VDC2eAbBShYVE8YzZN2dhus4xDi6iM4bhOeX78oYcN/j3uewnb2ccQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "34d2322a-8dc8-4f72-a7bc-17e4e18b748a",
+                            SecurityStamp = "c68eeb89-8cef-46cc-a2b1-a842d33e760e",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         },
@@ -117,7 +117,7 @@ namespace HR.LeaveManagement.API.Migrations
                         {
                             Id = "9e224968-33e4-4652-b7b7-8574d048cdb9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "53f64297-4a5f-47e4-ac30-909f98d9ac2e",
+                            ConcurrencyStamp = "027400b6-5d95-4aec-a695-e88f7c4edc88",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
@@ -125,9 +125,9 @@ namespace HR.LeaveManagement.API.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEECgs9QwG2lC1h4GgxN+jp4Dfr4DZ0pYgpbXgmAS5v6yM2aAbPvD7pOe0T7Ml+w7Yw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOm+zQ7jdJvr2L7JqiqjLTLRy3RJhNB7lVgme9wdjK+Vxhc2jBjT3jSJXbWlyYwjWw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "95a30b0c-ab1d-444a-8021-a2f7331561ee",
+                            SecurityStamp = "735c773c-2a40-4b0a-87d8-695d3426e4f6",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com"
                         });

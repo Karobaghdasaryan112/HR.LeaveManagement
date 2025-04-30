@@ -1,15 +1,18 @@
 ﻿using HR.LeaveManagement.MVC.Contracts;
 using HR.LeaveManagement.MVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagement.MVC.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeService _leaveTypeService;
-
-        public LeaveTypesController(ILeaveTypeService leaveTypeService)
+        private readonly ILeaveAllocationService _leaveAllocationService;
+        public LeaveTypesController(ILeaveTypeService leaveTypeService, ILeaveAllocationService leaveAllocationService)
         {
+            _leaveAllocationService = leaveAllocationService;
             _leaveTypeService = leaveTypeService;
         }
 
@@ -71,7 +74,7 @@ namespace HR.LeaveManagement.MVC.Controllers
             try
             {
                 var response = await _leaveTypeService.UpdateLeaveTypeAsync(Id, model);
-                if(response.Success)
+                if (response.Success)
                     return RedirectToAction(nameof(Index));
                 ModelState.AddModelError("", response.ValidationErrors);
             }
@@ -121,8 +124,6 @@ namespace HR.LeaveManagement.MVC.Controllers
                 modelVM = await _leaveTypeService.GetLeaveTypeDetailsAsync(Id);
                 if (modelVM == null)
                     return RedirectToAction(nameof(Index));
-
-
             }
             catch (Exception ex)
             {
@@ -131,6 +132,23 @@ namespace HR.LeaveManagement.MVC.Controllers
             return View(modelVM);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Allocate(int id)
+        {
+            try
+            {
+                var response = await _leaveAllocationService.CreateLeaveAllocations(id);
+                if (response.Success)
+                    return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("", response.ValidationErrors);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+            return BadRequest();
+        }
 
     }
 }

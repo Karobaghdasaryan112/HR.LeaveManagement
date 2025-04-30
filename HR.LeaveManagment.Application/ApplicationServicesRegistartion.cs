@@ -16,7 +16,7 @@ namespace HR.LeaveManagment.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining(typeof(LeaveTypeDto)));
-
+            services.AddHttpContextAccessor();
             services.AddTransient<ICommandResponse,BaseCommandResponse>();
 
             var assemblies = new[] {

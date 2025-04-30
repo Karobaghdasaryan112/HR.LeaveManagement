@@ -26,7 +26,6 @@ namespace HR.LeaveManagement.MVC.Models
         [Required]
         [DisplayName("End Date")]
         public DateTime EndTime { get; set; }
-
         public SelectList LeaveTypes { get; set; }
         [Display(Name = "Leave Type")]
         [Required]

@@ -35,6 +35,7 @@ namespace HR.LeaveManagement.Identity.Services
             {
                 throw new Exception($"User With {request.Email} not found");
             }
+            var password = new PasswordHasher<ApplicationUser>().HashPassword(user,request.Password);
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);
 
             if(!result.Succeeded)

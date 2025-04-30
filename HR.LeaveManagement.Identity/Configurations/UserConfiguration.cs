@@ -12,8 +12,9 @@ namespace HR.LeaveManagement.Identity.Configurations
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             var hasher = new PasswordHasher<ApplicationUser>();
-            var ApplicationUser1PasswordHasher = "AQAAAAIAAYagAAAAEECgs9QwG2lC1h4GgxN+jp4Dfr4DZ0pYgpbXgmAS5v6yM2aAbPvD7pOe0T7Ml+w7Yw==";
-            var ApplicationUser2PasswordHasher = "AQAAAAIAAYagAAAAEECgs9QwG2lC1h4GgxN+jp4Dfr4DZ0pYgpbXgmAS5v6yM2aAbPvD7pOe0T7Ml+w7Yw==";
+
+            var ApplicationUser1PasswordHasher = "AQAAAAIAAYagAAAAEMyGPi5LPdB5VDC2eAbBShYVE8YzZN2dhus4xDi6iM4bhOeX78oYcN/j3uewnb2ccQ==";
+            var ApplicationUser2PasswordHasher = "AQAAAAIAAYagAAAAEOm+zQ7jdJvr2L7JqiqjLTLRy3RJhNB7lVgme9wdjK+Vxhc2jBjT3jSJXbWlyYwjWw==";
 
             builder.HasData(
                  new ApplicationUser

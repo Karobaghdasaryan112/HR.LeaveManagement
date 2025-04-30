@@ -2,6 +2,7 @@
 using HR.LeaveManagement.MVC.Contracts;
 using HR.LeaveManagement.MVC.Models;
 using HR.LeaveManagement.MVC.Services.Base;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HR.LeaveManagement.MVC.Services
 {
@@ -16,6 +17,7 @@ namespace HR.LeaveManagement.MVC.Services
             _httpClient = client;
             _localStorageService = services;
         }
+
 
         public async Task<Response<int>> CreateLeaveTypeAsync(CreateLeaveTypeVM model)
         {
@@ -50,6 +52,7 @@ namespace HR.LeaveManagement.MVC.Services
             try
             {
                 var response = new Response<int>();
+                AddBearerToken();
                 await _client.LeaveTypesDELETEAsync(id);
                 response.Success = true;
                 return response;
